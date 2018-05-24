@@ -75,6 +75,11 @@ export default class TodoApp extends React.Component {
     this.chooseStatus();
   }
 
+  delAllCompleted = () => {
+    this.todos = this.todos.filter(item => !item.completed);
+    this.chooseStatus();
+  }
+
   render() {
     let {showTodos,status,uncompletedCount} = this.state;
     showTodos = this.todos.filter(todo => {
@@ -111,10 +116,9 @@ export default class TodoApp extends React.Component {
         <TodoStatus
           chooseStatus={this.chooseStatus}
           uncompletedCount={uncompletedCount}
+          delAllCompleted={this.delAllCompleted}
         />
       </div>
     );
   }
 }
-
-// todo : update todo 

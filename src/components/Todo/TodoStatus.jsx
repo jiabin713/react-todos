@@ -5,10 +5,14 @@ export default class TodoStatus extends React.Component {
   static propTypes = {
     uncompletedCount: PropTypes.number.isRequired,
     chooseStatus: PropTypes.func.isRequired,
+    delAllCompleted: PropTypes.func.isRequired,
   };
 
   chooseStatus = (event) => {
     this.props.chooseStatus(event.target.value);
+  }
+  delAllCompleted = () => {
+    this.props.delAllCompleted();
   }
   render() {
     const { uncompletedCount } = this.props;
@@ -20,7 +24,7 @@ export default class TodoStatus extends React.Component {
           <li><button onClick={this.chooseStatus} value="active">Active</button></li>
           <li><button onClick={this.chooseStatus} value="completed">Completed</button></li>
         </ul>
-        <a>Clear Completed</a>
+        <a onClick={this.delAllCompleted}>Clear Completed</a>
       </div>
     );
   }
